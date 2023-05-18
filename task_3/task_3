@@ -1,0 +1,41 @@
+function clear (){
+    localStorage.clear('username')
+    localStorage.clear('userdate')
+}
+
+if(localStorage.getItem('username') === null){
+    
+    let promtName = prompt('Добро пожаловать! Назовите, пожалуйста, ваше имя ',);
+    let uName = promtName;
+    let lastDate = new Date();
+
+    localStorage.setItem('username', uName);
+    localStorage.setItem('userdate', lastDate);
+
+    console.log(uName);
+    console.log(lastDate);
+
+} 
+else if(localStorage.getItem('username') === 'null'){
+    clear()
+} 
+else if (localStorage.getItem('username') === ''){
+    clear()
+} 
+else {
+    
+    alert(`Добрый день, ${localStorage.getItem('username')}! Давно не виделись. В последний раз вы были у нас ${localStorage.getItem('userdate')}`);
+    let resOn = confirm(`Вы хотите продолжить как ${localStorage.getItem('username')}?`)
+
+    if(resOn === true){
+        alert('Заходите');
+    } else {
+        clear();
+    }
+
+    lastDate = new Date();
+    localStorage.setItem('userdate', lastDate);
+
+    console.log(localStorage.getItem('username'));
+    console.log(lastDate);
+}
